@@ -22,3 +22,52 @@ The Flask application renders the HTML template, including the encrypted result,
 5:User Interaction:
 Users receive real-time feedback with the encrypted data displayed on the web page.
 They can copy the encrypted result or take further actions as needed.
+
+Process Diagram:
++------------------------+       +----------------------+       +------------------------+
+|                        |       |                      |       |                        |
+|      User's Browser    |       |   Flask Application  |       |   AES Encryption/      |
+|                        |       |                      |       |    Decryption Module   |
++------------------------+       +----------+-----------+       +----------+-------------+
+                                            |                            |
+                                            |                            |
+                                    +-------v---------------------+  |
+                                    |                           |  |
+                                    |  Handle HTTP Request     |  |
+                                    |                           |  |
+                                    +-----------+---------------+  |
+                                                |                  |
+                                                v                  |
+                                          +-----+-------------+    |
+                                          |                   |    |
+                                          |  Process Form Data|    |
+                                          |                   |    |
+                                          +-------------------+    |
+                                                |                  |
+                                                v                  |
+                                          +-----+-------------+    |
+                                          |                   |    |
+                                          | Generate Key      |    |
+                                          |                   |    |
+                                          +-------------------+    |
+                                                |                  |
+                                                v                  |
+                                          +-----+-------------+    |
+                                          |                   |    |
+                                          |  Encrypt Data     |    |
+                                          |                   |    |
+                                          +-------------------+    |
+                                                |                  |
+                                                v                  |
+                                          +-----+-------------+    |
+                                          |                   |    |
+                                          |  Render HTML      |    |
+                                          |                   |    |
+                                          +-------------------+    |
+                                                |                  |
+                                                v                  |
+                                          +-----+-------------+    |
+                                          |                   |    |
+                                          |   Display Result  |    |
+                                          |                   |    |
+                                          +-------------------+    |
